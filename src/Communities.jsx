@@ -1,53 +1,109 @@
 import React from 'react';
-import { Grid } from '@material-ui/core/';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, List, Typography, AppBar, Toolbar } from '@material-ui/core/';
 
 import Community from './Community.jsx';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+  },
+  title: {
+    display: 'flex',
+    flexGrow: 0,
+    flexShrink: 1,
+    color: 'white',
+  },
+  appBar1: {
+    display: 'flex',
+    flexGrow: 0,
+    flexShrink: 1,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    backgroundColor: '#2c856a'
+  },
+  appBar2: {
+    display: 'flex',
+    flexGrow: 0,
+    flexShrink: 1,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    backgroundColor: theme.palette.primary
+  },
+}));
+
 const Communities = props => {
+  const classes = useStyles();
 
   return (
     <div data-testid="communities">
-      <h3> LOW POLLUTION COMMUNITIES: {props.lowCommunities.length}</h3>
+      <AppBar position="static" className={classes.appBar1} >
+        <Toolbar variant="dense" >
+          <Typography variant="h5">
+            LOW POLLUTION COMMUNITIES: {props.lowCommunities.length}
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Grid
         style={{
-          maxHeight: '50vh',
+          maxHeight: '25vh',
           boxSizing: 'border-box',
           padding: '1em',
           overflowX: 'hidden',
           overflowY: 'auto'
         }}>
-        {props.lowCommunities.map((community, index) => {
-          while (index < props.displayCount) {
-            return (
-              <Community
-                key={`${community.id}`}
-                index={index}
-                community={community}
-              />
-            );
-          }
-          })}
+          <List className={classes.root}>
+            {props.lowCommunities.map((community, index) => {
+              while (index < props.displayCount) {
+                return (
+                  <div>
+                    <Community
+                      key={`${community.id}`}
+                      index={index}
+                      community={community}
+                    />
+                  </div>
+                );
+              }
+              })}
+          </List>
       </Grid>
-      <h3> HIGH POLLUTION COMMUNITIES: {props.highCommunities.length} </h3>
+      <AppBar position="static" className={classes.appBar2} >
+        <Toolbar variant="dense" >
+          <Typography variant="h5" >
+            HIGH POLLUTION COMMUNITIES: {props.highCommunities.length}
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Grid
         style={{
-          maxHeight: '50vh',
+          maxHeight: '25vh',
           boxSizing: 'border-box',
           padding: '1em',
           overflowX: 'hidden',
           overflowY: 'auto'
         }}>
-        {props.highCommunities.map((community, index) => {
-          while (index < props.displayCount) {
-            return (
-              <Community
-                key={`${community.id}`}
-                index={index}
-                community={community}
-              />
-            );
-          }
-          })}
+          <List className={classes.root}>
+            {props.highCommunities.map((community, index) => {
+              while (index < props.displayCount) {
+                return (
+                  <div>
+                    <Community
+                      key={`${community.id}`}
+                      index={index}
+                      community={community}
+                    />
+                  </div>
+                );
+              }
+              })}
+          </List>
       </Grid>
     </div>
   );
