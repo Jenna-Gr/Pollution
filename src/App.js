@@ -83,9 +83,9 @@ const App = () => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <div>
+        <div data-testid="pie-chart">
           <h4 align="center">{parseInt((highCommunities.length / allCommunities.length) * 100)}% of Communities have High Pollution.</h4>
-          <Chart value={(highCommunities.length / allCommunities.length) * 100} size={15} data-testid="pie-chart"/>
+          <Chart value={(highCommunities.length / allCommunities.length) * 100} size={15} />
           <h6 align="center">High Pollution is defined as at least one measurement >= 5 µg/m³.</h6>
         </div>
         <ButtonGroup>

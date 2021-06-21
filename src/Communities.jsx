@@ -63,11 +63,10 @@ const Communities = props => {
             {props.lowCommunities.map((community, index) => {
               while (index < props.displayCount) {
                 return (
-                  <div key={uuidv4()}>
+                  <div data-testid="low-community" key={uuidv4()}>
                     <Community
                       index={index}
                       community={community}
-                      data-testid="low-community"
                     />
                   </div>
                 );
@@ -94,11 +93,10 @@ const Communities = props => {
             {props.highCommunities.map((community, index) => {
               while (index < props.displayCount) {
                 return (
-                  <div key={uuidv4()}>
+                  <div data-testid="high-community" key={uuidv4()}>
                     <Community
                       index={index}
                       community={community}
-                      data-testid="high-community"
                     />
                   </div>
                 );
