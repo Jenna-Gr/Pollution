@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, List, Typography, AppBar, Toolbar } from '@material-ui/core/';
+import { v4 as uuidv4 } from 'uuid';
 
 import Community from './Community.jsx';
 
@@ -62,9 +63,8 @@ const Communities = props => {
             {props.lowCommunities.map((community, index) => {
               while (index < props.displayCount) {
                 return (
-                  <div>
+                  <div key={uuidv4()}>
                     <Community
-                      key={`${community.id}`}
                       index={index}
                       community={community}
                     />
@@ -93,9 +93,8 @@ const Communities = props => {
             {props.highCommunities.map((community, index) => {
               while (index < props.displayCount) {
                 return (
-                  <div>
+                  <div key={uuidv4()}>
                     <Community
-                      key={`${community.id}`}
                       index={index}
                       community={community}
                     />

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, } from '@material-ui/core/';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function DataModal({ name, data }) {
+const DataModal = ({ name, data }) => {
   const rows = [];
   const columns = [
     { id: 'average', label: 'Average Value', minWidth: 170 },
@@ -64,3 +64,4 @@ export default function DataModal({ name, data }) {
     </Container>
   );
 }
+export default DataModal;

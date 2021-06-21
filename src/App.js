@@ -41,6 +41,7 @@ const App = () => {
   const [highCommunities, setHighCommunities] = useState([]);
   const [lowCommunities, setLowCommunities] = useState([]);
   const [displayCount, setDisplayCount] = useState(4);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     axios.get('https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/locations?limit=16000&page=1&offset=0&sort=desc&radius=1000&order_by=lastUpdated&entity=community&dumpRaw=false')
@@ -89,6 +90,7 @@ const App = () => {
           </Toolbar>
         </AppBar>
         <div>
+          <h4 align="center">{parseInt((highCommunities.length / allCommunities.length) * 100)}% of Communities have High Pollution.</h4>
           <Chart value={(highCommunities.length / allCommunities.length) * 100} size={15} />
         </div>
         <ButtonGroup>
@@ -96,10 +98,18 @@ const App = () => {
             className={classes.button}
             aria-label="load more communities"
             data-testid="more-communities"
-            variant="outlined"
+            disabled={buttonDisabled}
             onClick={() => {
               setDisplayCount(displayCount + 4);
             }}> Show More Communities </Button>
+          <Button
+            className={classes.button}
+            aria-label="load all communities"
+            data-testid="all-communities"
+            onClick={() => {
+              setDisplayCount(allCommunities.length);
+              setButtonDisabled(true);
+            }}> Show All Communities </Button>
         </ButtonGroup>
         <Grid>
           <Communities
