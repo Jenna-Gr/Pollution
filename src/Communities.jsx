@@ -46,7 +46,7 @@ const Communities = props => {
     <div data-testid="communities">
       <AppBar position="static" className={classes.appBar1} >
         <Toolbar variant="dense" >
-          <Typography variant="h5">
+          <Typography variant="h5" data-testid="low-heading">
             LOW POLLUTION COMMUNITIES: {props.lowCommunities.length}
           </Typography>
         </Toolbar>
@@ -67,6 +67,7 @@ const Communities = props => {
                     <Community
                       index={index}
                       community={community}
+                      data-testid="low-community"
                     />
                   </div>
                 );
@@ -76,7 +77,7 @@ const Communities = props => {
       </Grid>
       <AppBar position="static" className={classes.appBar2} >
         <Toolbar variant="dense" >
-          <Typography variant="h5" >
+          <Typography variant="h5" data-testid="high-heading">
             HIGH POLLUTION COMMUNITIES: {props.highCommunities.length}
           </Typography>
         </Toolbar>
@@ -97,6 +98,7 @@ const Communities = props => {
                     <Community
                       index={index}
                       community={community}
+                      data-testid="high-community"
                     />
                   </div>
                 );

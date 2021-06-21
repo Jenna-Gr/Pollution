@@ -1,13 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core/';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { ButtonGroup } from '@material-ui/core/';
-import { Button } from '@material-ui/core/';
+import { Grid, makeStyles, Typography, AppBar, Toolbar, ButtonGroup, Button } from '@material-ui/core/';
 import axios from 'axios';
 
 import Communities from './Communities.jsx';
@@ -72,7 +66,7 @@ const App = () => {
     return (
       <div className="App">
         <header>
-        <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
         </header>
         <h1>Loading...</h1>
       </div>
@@ -82,7 +76,7 @@ const App = () => {
   if (display === 'ready') {
     return (
       <div className="App">
-        <AppBar position="static" className={classes.title} >
+        <AppBar position="static" className={classes.title} data-testid="title-bar">
           <Toolbar variant="dense" >
             <Typography variant="h4" >
               POLLUTION
@@ -91,7 +85,8 @@ const App = () => {
         </AppBar>
         <div>
           <h4 align="center">{parseInt((highCommunities.length / allCommunities.length) * 100)}% of Communities have High Pollution.</h4>
-          <Chart value={(highCommunities.length / allCommunities.length) * 100} size={15} />
+          <Chart value={(highCommunities.length / allCommunities.length) * 100} size={15} data-testid="pie-chart"/>
+          <h6 align="center">High Pollution is defined as at least one measurement >= 5 µg/m³.</h6>
         </div>
         <ButtonGroup>
           <Button
